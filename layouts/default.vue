@@ -1,8 +1,32 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="root-layout">
+    <header>
+      <sushi-header />
+    </header>
+    <main>
+      <nuxt />
+    </main>
+    <footer>
+      <tabs />
+    </footer>
   </div>
 </template>
+
+<script>
+import SushiHeader from '@/components/Header'
+import Tabs from '@/components/Tabs'
+
+export default {
+  components: {
+    'sushi-header': SushiHeader,
+    Tabs
+  },
+  beforeCreate () {
+    const name = this.$store.getters['setting/presetNames'][0] || 'スシロー'
+    this.$store.dispatch('setting/usePreset', name)
+  }
+}
+</script>
 
 <style>
 html {
@@ -15,6 +39,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 *,
@@ -51,5 +76,25 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.root-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.root-layout > header {
+  position: sticky;
+  top: 0;
+}
+
+.root-layout > main {
+  flex-grow: 1;
+}
+
+.root-layout > footer {
+  position: sticky;
+  bottom: 0;
 }
 </style>

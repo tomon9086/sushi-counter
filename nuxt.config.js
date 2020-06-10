@@ -40,7 +40,8 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-webfontloader'
   ],
   /*
   ** Build configuration
@@ -50,6 +51,14 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  webfontloader: {
+    google: {
+      families: [
+        'Kosugi+Maru',
+        'M+PLUS+Rounded+1c:wght@500'
+      ]
     }
   }
 }
