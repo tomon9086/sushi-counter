@@ -8,14 +8,17 @@ export const state = () => ({
       name: 'スシロー',
       plates: [
         {
+          id: 1,
           color: color.YELLOW,
           price: 120
         },
         {
+          id: 2,
           color: color.RED,
           price: 170
         },
         {
+          id: 3,
           color: color.BLACK,
           price: 320
         }
@@ -46,6 +49,7 @@ export const mutations = {
     }
   },
   setPlates (state, plates) {
+    this.commit('count/setPlates', plates.map(p => ({ ...p })))
     state.plates = plates
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <table class="plate-list">
-      <item v-for="plate in plates" :key="plate.color" :plate="plate">
+      <item v-for="plate in plates" :key="plate.id" :plate="plate">
         {{ plate.price }}円
       </item>
     </table>
